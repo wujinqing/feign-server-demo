@@ -36,6 +36,26 @@ public class Bootstrap {
         return u;
     }
 
+    @RequestMapping("/timeout")
+    public User timeout(Long timeout)
+    {
+        User u = new User();
+
+        u.setId(1L);
+        u.setName("王五");
+        u.setAge(55);
+
+        try {
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return u;
+    }
+
     @RequestMapping("/getUser2")
     public User getUser2(Long id)
     {
@@ -43,24 +63,7 @@ public class Bootstrap {
 
         u.setId(id);
         u.setName("李四");
-        u.setAge(30);
-
-        try {
-            Thread.sleep(650L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return u;
-    }
-
-    @RequestMapping(name = "/getUser3", method = RequestMethod.POST)
-    public User getUser3(Long id)
-    {
-        User u = new User();
-
-        u.setId(id);
-        u.setName("李四");
-        u.setAge(33);
+        u.setAge(10);
 
         return u;
     }
